@@ -1,0 +1,21 @@
+{
+  "name": "leadflow",
+  "version": "2.0.0",
+  "private": true,
+  "description": "LeadFlow - a lightweight single-screen lead management CRM",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm run build && npm start --prefix server",
+    "test": "npm test --prefix server && npm test --prefix client",
+    "test:tz": "npm run test:tz --prefix client",
+    "docker": "docker compose up --build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
