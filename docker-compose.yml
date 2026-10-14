@@ -1,0 +1,15 @@
+# One command to run the whole app:  docker compose up --build   ->  http://localhost:4000
+services:
+  leadflow:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      SEED_DEMO_DATA: "true" # fill an empty database with demo leads; remove for a clean start
+      # ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}   # optional: AI-written summaries
+    volumes:
+      - leadflow-data:/data # SQLite file lives here, so data survives restarts
+    restart: unless-stopped
+
+volumes:
+  leadflow-data:
