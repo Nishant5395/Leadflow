@@ -1,0 +1,17 @@
+# Render Blueprint: New > Blueprint > pick this repo. Deploys the Docker image above.
+# NOTE: Render's free tier has no persistent disk, so the SQLite file (and your data) resets on each
+# deploy or spin-down; demo data is re-seeded automatically. For real persistence add a `disk:` (paid plan)
+# mounted at /data, or move the Store class to Postgres.
+services:
+  - type: web
+    name: leadflow
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: SEED_DEMO_DATA
+        value: "true"
+      - key: TRUST_PROXY
+        value: "1" # Render terminates TLS in front of the app; needed for correct per-IP rate limiting
+      - key: ANTHROPIC_API_KEY
+        sync: false # optional; set it in the Render dashboard if you want AI summaries
