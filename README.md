@@ -2,6 +2,7 @@
 
 A single-screen lead manager: see every lead at a glance, log each conversation, and never miss a follow-up.
 Built for the PravarAI full-stack intern assessment with **React (Vite) + Node.js (Express) + SQLite**.
+
 **Live demo:** https://leadflow-n3ak.onrender.com/
 
 | Light | Dark |
